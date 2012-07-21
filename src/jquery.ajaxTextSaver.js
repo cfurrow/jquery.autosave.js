@@ -7,6 +7,17 @@ jQuery.fn.ajaxTextSaver = function(url,extra,success,error){
   var options = $.extend({},defaults,extra);
   var dataAttrs = getDataAttributes(this[0]);
   options = $.extend(options,dataAttrs);
+
+  function getDataAttributes(el){
+    var rDataAttr = /data\-(.+)$/;
+    var attrs = [];
+    $.each(el.attributes,function(index,attr){
+      if(rDataAttr.test(attr.nodeName)){
+        attrs.push(rDataAttr.exec(attr.nodeName)[1]);
+      }
+    });
+    return attrs;
+  }
   
   this.bind(options.event,function(){
     var $this = $(this);
@@ -19,15 +30,4 @@ jQuery.fn.ajaxTextSaver = function(url,extra,success,error){
       error:error
     });
   });
-  function getDataAttributes(el){
-    var rDataAttr = /data\-(.+)$/;
-    var attrs = [];
-    $.each(el.attributes,function(index,attr){
-      if(rDataAttr.test(attr.nodeName)){
-        attrs.push(rDataAttr.exec(attr.nodeName)[1]);
-      }
-    });
-    return attrs;
-  }
 };
-$("input").ajaxTextSaver("/",{},function(){alert("success");},function(){alert("fail");});

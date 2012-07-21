@@ -4,16 +4,31 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
   <title>jquery.ajaxTextSaver.js - example</title>
-  
+
+  <link rel="stylesheet" type="text/css" href="../css/example.css" />
 </head>
 <body>
-  <h1>Example</h1>
-  <p>
-  </p>
-  <form action="" method="POST">
-    <input type="text" name="someInput" data-id="1" data-url="/?update" data-event="blur,change" value="change me" />
-    <button type="submit">Save</button>
-  </form>
-  <script type="text/javascript" charset="utf-8" src="../src/jquery.ajaxTextSaver.js"></script>
+  <div class="container">
+    <h1>Example</h1>
+    <p>
+    </p>
+    <form action="" method="POST">
+      <input type="text" name="someInput" data-id="1" data-url="/?update" data-event="blur,change" value="change me" />
+      <span class="success hide">Success!</span>
+      <span class="fail hide">Fail!</span>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+  <script type="text/javascript" charset="utf-8" src="plugins.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../src/jquery.ajaxTextSaver.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    $("input").ajaxTextSaver("",{},
+        function(){
+          console.log("success");
+        },
+        function(){
+          console.log("fail");
+        });
+  </script>
 </body>
 </html>
