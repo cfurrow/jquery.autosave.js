@@ -3,14 +3,14 @@ jQuery.fn.autosave = function(options){
   $.each(this,function(){
     var $this = $(this);
     var defaults = {
-      data:{id:$this.attr("data-id"),url:""},
-      event: "blur",
+      data:{},
+      event: "change",
       success: function(){},
-      error  : function(){}
+      error  : function(){},
+      before : function(){}
     };
     options = $.extend(defaults,options);
-    var dataAttrs = getDataAttributes(this);
-    options.data = $.extend(options.data,dataAttrs);
+    options.data = $.extend(options.data,getDataAttributes(this));
 
     console.log(options);
 
@@ -18,9 +18,15 @@ jQuery.fn.autosave = function(options){
       var $el = $(this);
       options.data.value = $el.val();
       options.data = $.extend(options.data,getDataAttributes(this));
+      var url = options.data.url ? options.data.url : options.url;
       console.log(options);
+
+      if(options.before){
+        options.before.call(this,$el);
+      }
+
       $.ajax({
-        url:options.url,
+        url:url,
         data:options.data,
         success:function(data){
           options.success(data,$el);

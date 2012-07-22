@@ -10,17 +10,15 @@
 <body>
   <div class="container">
     <h1>Example</h1>
-    <p>
-    </p>
     <form action="" method="POST">
       <p>
-        <input type="text" name="someInput" data-id="1" data-url="/?update" data-event="blur,change" value="change me" />
+        <input type="text" name="someInput" data-id="1" data-url="/api/updateinput" data-event="blur,change" value="change me" />
         <button type="submit">Save</button>
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-fail fail hide">Fail!</span>
       </p>
       <p>
-        <input type="text" name="someOtherInput" data-id="1" data-url="/?update" data-event="blur,change" value="you can change me too" />
+        <input type="text" name="someOtherInput" data-id="1" data-url="/example" data-event="blur,change" value="you can change me too" />
         <button type="submit">Save</button>
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-fail fail hide">Fail!</span>
@@ -37,8 +35,11 @@
     function errorCallback(error,$jq){
       $jq.find("~.fail").fadeIn();
     }
+    function beforeCallback($jq){
+      $jq.siblings(".success,.fail").fadeOut();
+    }
 
-    $("input").autosave({url:"/example",success:successCallback,error:errorCallback});
+    $("input").autosave({url:"/example",success:successCallback,error:errorCallback,before:beforeCallback});
   </script>
 </body>
 </html>
