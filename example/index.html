@@ -36,6 +36,7 @@
       $jq.find("~.fail").fadeIn();
     }
     function beforeCallback($jq){
+      console.log(this);
       $jq.siblings(".success,.fail").fadeOut();
     }
 
