@@ -11,17 +11,13 @@ jQuery.fn.autosave = function(options){
     };
     options = $.extend(defaults,options);
     var data = getDataAttributes(this);
-    console.log(options);
-    console.log(data);
 
     var event = data.event || options.event;
-    console.log(event);
     $this.on(event,function(){
       var $el = $(this);
       data.value = $el.val();
       data = $.extend(data,getDataAttributes(this));
       var url = data.url ? data.url : options.url;
-      console.log(options);
 
       if(options.before){
         options.before.call(this,$el);
