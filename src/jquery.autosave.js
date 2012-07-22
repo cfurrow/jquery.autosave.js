@@ -8,7 +8,7 @@ jQuery.fn.autosave = function(options){
       success: function(){},
       error  : function(){}
     };
-    options = $.extend(options,defaults,options.extra);
+    options = $.extend(defaults,options);
     var dataAttrs = getDataAttributes(this);
     options.data = $.extend(options.data,dataAttrs);
 
@@ -22,8 +22,12 @@ jQuery.fn.autosave = function(options){
       $.ajax({
         url:options.url,
         data:options.data,
-        success:options.success,
-        error:options.error
+        success:function(data){
+          options.success(data,$el);
+        },
+        error:function(error){
+          options.error(error,$el);
+        }
       });
     });
   });

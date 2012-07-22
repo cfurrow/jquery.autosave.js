@@ -15,12 +15,15 @@
     <form action="" method="POST">
       <p>
         <input type="text" name="someInput" data-id="1" data-url="/?update" data-event="blur,change" value="change me" />
-        <span class="success hide">Success!</span>
-        <span class="fail hide">Fail!</span>
         <button type="submit">Save</button>
+        <span class="alert alert-success success hide">Success!</span>
+        <span class="alert alert-fail fail hide">Fail!</span>
       </p>
       <p>
         <input type="text" name="someOtherInput" data-id="1" data-url="/?update" data-event="blur,change" value="you can change me too" />
+        <button type="submit">Save</button>
+        <span class="alert alert-success success hide">Success!</span>
+        <span class="alert alert-fail fail hide">Fail!</span>
       </p>
     </form>
   </div>
@@ -28,11 +31,11 @@
   <script type="text/javascript" charset="utf-8" src="../src/jquery.autosave.min.js"></script>
   <script type="text/javascript" charset="utf-8">
 
-    function successCallback(data){
-      console.log("success");
+    function successCallback(data,$jq){
+      $jq.find("~.success").fadeIn();
     }
-    function errorCallback(data){
-      console.log("error");
+    function errorCallback(error,$jq){
+      $jq.find("~.fail").fadeIn();
     }
 
     $("input").autosave({url:"/example",success:successCallback,error:errorCallback});
