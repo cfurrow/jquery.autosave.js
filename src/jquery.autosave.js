@@ -1,10 +1,13 @@
-jQuery.fn.ajaxTextSaver = function(url,extra,success,error){
+jQuery.fn.autosave = function(options){
   var $ = jQuery;
   var defaults = {
     id: this.attr("data-id"),
-    event: "blur"
+    event: "blur",
+    url: "",
+    success: function(){},
+    error  : function(){}
   };
-  var options = $.extend({},defaults,extra);
+  options = $.extend(options,defaults,options.extra);
   var dataAttrs = getDataAttributes(this[0]);
   options = $.extend(options,dataAttrs);
 
@@ -24,10 +27,10 @@ jQuery.fn.ajaxTextSaver = function(url,extra,success,error){
     options.value = $this.val();
     options = $.extend(options,getDataAttributes(this));
     $.ajax({
-      url:url,
-      data:options,
-      success:success,
-      error:error
+      url:options.url,
+      data:options.data,
+      success:options.success,
+      error:options.error
     });
   });
 };

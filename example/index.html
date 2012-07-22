@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <title>jquery.ajaxTextSaver.js - example</title>
+  <title>jquery.autosave.js - example</title>
 
   <link rel="stylesheet" type="text/css" href="../css/example.css" />
 </head>
@@ -20,15 +20,17 @@
     </form>
   </div>
   <script type="text/javascript" charset="utf-8" src="plugins.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../src/jquery.ajaxTextSaver.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../src/jquery.autosave.min.js"></script>
   <script type="text/javascript" charset="utf-8">
-    $("input").ajaxTextSaver("",{},
-        function(){
-          console.log("success");
-        },
-        function(){
-          console.log("fail");
-        });
+
+    function successCallback(data){
+      console.log("success");
+    }
+    function errorCallback(data){
+      console.log("error");
+    }
+
+    $("input").autosave({url:"",success:successCallback,error:errorCallback});
   </script>
 </body>
 </html>
