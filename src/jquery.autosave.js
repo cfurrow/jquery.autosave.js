@@ -10,15 +10,17 @@ jQuery.fn.autosave = function(options){
       before : function(){}
     };
     options = $.extend(defaults,options);
-    options.data = $.extend(options.data,getDataAttributes(this));
+    var data = getDataAttributes(this);
     console.log(options);
+    console.log(data);
 
-
-    $this.bind(options.event,function(){
+    var event = data.event || options.event;
+    console.log(event);
+    $this.on(event,function(){
       var $el = $(this);
-      options.data.value = $el.val();
-      options.data = $.extend(options.data,getDataAttributes(this));
-      var url = options.data.url ? options.data.url : options.url;
+      data.value = $el.val();
+      data = $.extend(data,getDataAttributes(this));
+      var url = data.url ? data.url : options.url;
       console.log(options);
 
       if(options.before){
@@ -27,7 +29,7 @@ jQuery.fn.autosave = function(options){
 
       $.ajax({
         url:url,
-        data:options.data,
+        data:data,
         success:function(data){
           options.success(data,$el);
         },
