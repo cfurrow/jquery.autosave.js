@@ -25,6 +25,11 @@
         <li><strong>data-url</strong>: The url that will be used to post the data.</li>
         <li><strong>data-event</strong>: The jquery events used that will trigger the ajax post.</li>
       </ol>
+    </p>
+    <p>
+      <strong>data-* attributes will override any global option set.</strong>
+    </p>
+    <p>
       Starting the plugin:
       <pre> $("input").autosave(); </pre>
       And that's it! Now anytime you change or blur from any &lt;input&gt; element on the page, the plugin will look for the data-url
@@ -96,14 +101,22 @@
     </table>
 
     <h3>Live demo</h3>
+    <p>
+      View-source on the following examples to see how they work.
+    </p>
     <form action="" method="POST">
       <p>
-        <input type="text" name="someInput" class="span4" data-id="1" data-url="/api/updateinput" data-event="blur,change" value="I fail because I have a bad url" />
+        <input type="text" name="someInput" class="span4" data-id="1" data-url="/api/updateinput" data-event="blur change" value="I fail because I have a bad url" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
       <p>
-        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="/example" data-event="blur,change" value="I will succeed because my url is valid" />
+        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="/example" data-event="blur change" value="I will succeed because my url is valid" />
+        <span class="alert alert-success success hide">Success!</span>
+        <span class="alert alert-danger fail hide">Fail!</span>
+      </p>
+      <p>
+        <input type="text" name="somethingElse" class="span4" data-id="1" value="I use global options" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
@@ -112,7 +125,6 @@
   <script type="text/javascript" charset="utf-8" src="plugins.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="../src/jquery.autosave.min.js"></script>
   <script type="text/javascript" charset="utf-8">
-
     function successCallback(data,$jq){
       $jq.find("~.success").fadeIn();
     }
