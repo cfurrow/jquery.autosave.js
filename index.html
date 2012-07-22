@@ -111,7 +111,7 @@
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
       <p>
-        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="/example" data-event="blur change" value="I will succeed because my url is valid" />
+        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="" data-event="blur change" value="I will succeed because my url is valid" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
@@ -136,7 +136,7 @@
       $jq.siblings(".success,.fail").fadeOut();
     }
 
-    $("input").autosave({url:"example",success:successCallback,error:errorCallback,before:beforeCallback});
+    $("input").autosave({url:"",success:successCallback,error:errorCallback,before:beforeCallback});
   </script>
 </body>
 </html>
