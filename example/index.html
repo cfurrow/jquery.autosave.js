@@ -3,13 +3,19 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <title>jquery.autosave.js - example</title>
+  <title>jquery.autosave.js - by cfurrow</title>
 
   <link rel="stylesheet" type="text/css" href="../css/example.css" />
 </head>
 <body>
   <div class="container">
-    <h1>How do I use it?</h1>
+    <h1>jquery.autosave.js - by <a href="http://carlfurrow.com">Carl Furrow</a></h1>
+    <p>
+      jquery.autosave.js is a little plugin that can help auto-save input values to 
+      an ajax endpoint on your site so that user-input is constantly sync'd with the
+      backend database without full-page post backs.
+    </p>
+    <h3>How do I use it?</h3>
     <p>
       There are a few ways you can use this plugin:
       <ol>
@@ -111,7 +117,7 @@
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
       <p>
-        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="/example" data-event="blur change" value="I will succeed because my url is valid" />
+        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="" data-event="blur change" value="I will succeed because my url is valid" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
@@ -136,7 +142,7 @@
       $jq.siblings(".success,.fail").fadeOut();
     }
 
-    $("input").autosave({url:"/example",success:successCallback,error:errorCallback,before:beforeCallback});
+    $("input").autosave({url:"",success:successCallback,error:errorCallback,before:beforeCallback});
   </script>
 </body>
 </html>
