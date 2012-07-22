@@ -12,14 +12,12 @@ jQuery.fn.autosave = function(options){
     options = $.extend(defaults,options);
     options.data = $.extend(options.data,getDataAttributes(this));
 
-    console.log(options);
 
     $this.bind(options.event,function(){
       var $el = $(this);
       options.data.value = $el.val();
       options.data = $.extend(options.data,getDataAttributes(this));
       var url = options.data.url ? options.data.url : options.url;
-      console.log(options);
 
       if(options.before){
         options.before.call(this,$el);
@@ -39,7 +37,7 @@ jQuery.fn.autosave = function(options){
   });
 
   function getDataAttributes(el){
-    var rDataAttr = /data\-(.+)$/;
+    var rDataAttr = /data\-([\d]+)$/;
     var attrs = {};
     attrs.value = el.value;
     attrs.name  = el.name;
