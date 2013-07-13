@@ -112,12 +112,12 @@
     </p>
     <form action="" method="POST">
       <p>
-        <input type="text" name="someInput" class="span4" data-id="1" data-url="/api/updateinput" data-event="blur change" value="I fail because I have a bad url" />
+        <input type="text" name="someInput" class="span4" data-id="1" data-url="/api/updateinput" data-event="blur" value="I fail because I have a bad url" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
       <p>
-        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="" data-event="blur change" value="I will succeed because my url is valid" />
+        <input type="text" name="someOtherInput" class="span4" data-id="1" data-url="" data-event="blur" value="I will succeed because my url is valid" />
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
@@ -126,10 +126,15 @@
         <span class="alert alert-success success hide">Success!</span>
         <span class="alert alert-danger fail hide">Fail!</span>
       </p>
+      <p>
+        <input type="text" name="somethingElse" class="span4" data-id="1" data-type="json" value="I use JSON dataType" />
+        <span class="alert alert-success success hide">Success!</span>
+        <span class="alert alert-danger fail hide">Fail!</span>
+      </p>
     </form>
   </div>
   <script type="text/javascript" charset="utf-8" src="plugins.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../src/jquery.autosave.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../src/jquery.autosave.js"></script>
   <script type="text/javascript" charset="utf-8">
     function successCallback(data,$jq){
       $jq.find("~.success").fadeIn();
