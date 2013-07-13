@@ -36,6 +36,18 @@ You can pass any of these options to the .autosave() function:
       <td>Object that holds all data that will be posted back to the url when the event is fired. You can set global default values to be sent here. All data-* attribute values end up here, minus "data-" (e.g. "data-id" becomes "id").</td>
     </tr>
     <tr>
+      <td>debug</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>Will stop any requests from being performed and will console.log the data variable inside of the autosave library</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>string</td>
+      <td>html</td>
+      <td>You can now specify the dataType you are expecting (xml, json, script, or html)</td>
+    </tr>
+    <tr>
       <td>success</td>
       <td>function</td>
       <td>function(data,$jqueryElement){}</td>
